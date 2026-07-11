@@ -4,6 +4,7 @@ import UserCard from "./components/UserCard";
 import Loader from "./components/Loader";
 import Loading from "./components/Loading";
 import RepoList from "./components/Repolist";import "./App.css";
+import Githubapi from "./api/githubapi";
 
 function App() {
   const [repos, setRepos] = useState([]);
@@ -20,26 +21,16 @@ function App() {
     setUser(null);
 
     try {
-      const response = await fetch(
-        `https://api.github.com/users/${username}`
-      );
-
-      if (!response.ok) {
-        throw new Error("User not found");
-      }
-
-      const data = await response.json();
+      const response = await Githubapi.get(`/users/${username}`);
+      const data = await response.data;
       setUser(data);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
-    const repoResponse = await fetch(
-      `https://api.github.com/users/${username}/repos`
-    );
-
-    const repoData = await repoResponse.json();
+    const repoResponse = await Githubapi.get(`/users/${username}/repos`);
+    const repoData = await repoResponse.data;
 
     setRepos(repoData);
   };
