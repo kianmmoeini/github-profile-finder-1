@@ -4,4 +4,4 @@ const Githubapi = axios.create({
 baseURL: "https://api.github.com",
 });
 
-export default Githubapi;
+export default Githubapi; 

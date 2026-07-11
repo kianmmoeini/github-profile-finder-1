@@ -28,7 +28,7 @@ function App() {
       setError(err.message);
     } finally {
       setLoading(false);
-    }
+    } 
     const repoResponse = await Githubapi.get(`/users/${username}/repos`);
     const repoData = await repoResponse.data;
 
