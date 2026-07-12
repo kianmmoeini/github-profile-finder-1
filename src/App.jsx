@@ -1,42 +1,52 @@
 import { useState } from "react";
+import "./App.css";
+
 import SearchBar from "./components/SearchBar";
 import UserCard from "./components/UserCard";
-import Loader from "./components/Loader";
+import RepoList from "./components/Repolist";
 import Loading from "./components/Loading";
-import RepoList from "./components/Repolist";import "./App.css";
+import Toast, { showError } from "./components/toast";
+
 import Githubapi from "./api/githubapi";
 
 function App() {
   const [repos, setRepos] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-
+  const [error, setError] = useState(null);
   const fetchUser = async (username) => {
     if (!username) return;
 
     setLoading(true);
-    setError("");
     setUser(null);
-
+    setRepos([]);
     try {
-      const response = await Githubapi.get(`/users/${username}`);
-      const data = await response.data;
-      setUser(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    const userResponse = await Githubapi.get(`/users/${username}`);
+    setUser(userResponse.data);
+
+    const repoResponse = await Githubapi.get(
+      `/users/${username}/repos`
+    );
+    setRepos(repoResponse.data);
     } 
-    const repoResponse = await Githubapi.get(`/users/${username}/repos`);
-    const repoData = await repoResponse.data;
- 
-    setRepos(repoData);
+    catch(err) {
+      if (err.response?.status === 404) {
+        showError("user not found!");
+      } else {
+        showError("Something went wrong!");
+      }
+    } 
+    finally {
+      setLoading(false);
+    }
   };
+
   return (
     <div className="container">
+      <Toast />
+
       <h1>GitHub Profile Finder</h1>
+
       <SearchBar
         onSearch={fetchUser}
         loading={loading}
@@ -44,16 +54,17 @@ function App() {
 
       {loading && <Loading />}
 
-      {error && <p className="error">{error}</p>}
-
       {user && <UserCard user={user} />}
-      {(
-        <RepoList repos={repos} />
-      )}
+
+      {user && <RepoList repos={repos} />}
+
       <div className="footer">
         <br />
         <br />
-        <p className="creator">Created by Kian moeini</p>
+
+        <p className="creator">
+          Created by Kian Moeini
+        </p>
 
         <a
           className="mygithub"
