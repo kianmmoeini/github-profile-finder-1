@@ -15,7 +15,7 @@ function UserCard({ user }) {
         {user.bio || "This user has no bio."}
       </p>
 
-      <p>📍 {user.location || "Unknown"}</p>
+      <p>📍 {user.location || "Unknown location"}</p>
 
       <div className="stats">
         <div>
