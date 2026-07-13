@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+// this is a comment from ali aslani 
 function SearchBar({ onSearch, loading }) {
   const [username, setUsername] = useState("");
 
