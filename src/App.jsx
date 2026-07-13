@@ -1,45 +1,57 @@
 import { useState } from "react";
 import "./App.css";
 
+import { useQuery } from "@tanstack/react-query";
+
+import Githubapi from "./api/githubapi";
+
 import SearchBar from "./components/SearchBar";
 import UserCard from "./components/UserCard";
 import RepoList from "./components/Repolist";
 import Loading from "./components/Loading";
 import Toast, { showError } from "./components/toast";
 
-import Githubapi from "./api/githubapi";
-
 function App() {
-  const [repos, setRepos] = useState([]);
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const fetchUser = async (username) => {
-    if (!username) return;
+  const [username, setUsername] = useState("");
 
-    setLoading(true);
-    setUser(null);
-    setRepos([]);
-    try {
-    const userResponse = await Githubapi.get(`/users/${username}`);
-    setUser(userResponse.data);
+  const {
+    data: user,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["user", username],
 
-    const repoResponse = await Githubapi.get(
-      `/users/${username}/repos`
-    );
-    setRepos(repoResponse.data);
-    } 
-    catch(err) {
-      if (err.response?.status === 404) {
-        showError("user not found!");
-      } else {
-        showError("Something went wrong!");
-      }
-    } 
-    finally {
-      setLoading(false);
+    queryFn: async () => {
+      const response = await Githubapi.get(`/users/${username}`);
+      return response.data;
+    },
+
+    enabled: !!username,
+  });
+
+  const {
+    data: repos = [],
+  } = useQuery({
+    queryKey: ["repos", username],
+
+    queryFn: async () => {
+      const response = await Githubapi.get(
+        `/users/${username}/repos`
+      );
+
+      return response.data;
+    },
+
+    enabled: !!username,
+  });
+
+  if (error) {
+    if (error.response?.status === 404) {
+      showError("User not found!");
+    } else {
+      showError("Something went wrong!");
     }
-  };
+  }
 
   return (
     <div className="container">
@@ -48,11 +60,11 @@ function App() {
       <h1>GitHub Profile Finder</h1>
 
       <SearchBar
-        onSearch={fetchUser}
-        loading={loading}
+        onSearch={setUsername}
+        loading={isLoading}
       />
 
-      {loading && <Loading />}
+      {isLoading && <Loading />}
 
       {user && <UserCard user={user} />}
 
