@@ -1,4 +1,5 @@
 import { useState } from "react";
+<<<<<<< HEAD
 
 import {
   TextField,
@@ -6,6 +7,9 @@ import {
   Box,
 } from "@mui/material";
 
+=======
+// this is a comment from ali aslani 
+>>>>>>> 739996c287514b5ce06dcd3113cc2e600ceb32e7
 function SearchBar({ onSearch, loading }) {
   const [username, setUsername] = useState("");
 
