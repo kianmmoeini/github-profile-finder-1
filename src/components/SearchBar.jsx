@@ -1,35 +1,65 @@
 import { useState } from "react";
 
+import {
+  TextField,
+  Button,
+  Box,
+} from "@mui/material";
+
 function SearchBar({ onSearch, loading }) {
   const [username, setUsername] = useState("");
 
   const handleSearch = () => {
-    onSearch(username.trim());
+    const value = username.trim();
+
+    if (!value) return;
+
+    onSearch(value);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter" && !loading) {
+  const handleKeyDown = (event) => {
+    if (
+      event.key === "Enter" &&
+      !loading
+    ) {
       handleSearch();
     }
   };
 
   return (
-    <div className="search-box">
-      <input
-        type="text"
-        placeholder="Enter GitHub username..."
+    <Box
+      sx={{
+        display: "flex",
+        gap: 2,
+        maxWidth: 600,
+        mx: "auto",
+        mt: 4,
+      }}
+    >
+      <TextField
+        fullWidth
+        label="GitHub Username"
+        placeholder="Enter username..."
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(event) =>
+          setUsername(event.target.value)
+        }
         onKeyDown={handleKeyDown}
+        disabled={loading}
       />
 
-      <button
+      <Button
+        variant="contained"
         onClick={handleSearch}
         disabled={loading}
+        sx={{
+          px: 4,
+          whiteSpace: "nowrap",
+        }}
       >
         {loading ? "Loading..." : "Search"}
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 }
 

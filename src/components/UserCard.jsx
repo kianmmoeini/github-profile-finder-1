@@ -1,47 +1,141 @@
+import {
+  Card,
+  CardContent,
+  Avatar,
+  Typography,
+  Button,
+  Box,
+  Divider,
+} from "@mui/material";
+
 function UserCard({ user }) {
   return (
-    <div className="user-card">
-      <img
-        src={user.avatar_url}
-        alt={user.login}
-        className="avatar"
-      />
+    <Card
+      sx={{
+        maxWidth: 600,
+        mx: "auto",
+        mt: 4,
+        borderRadius: 4,
+        boxShadow: 4,
+      }}
+    >
+      <CardContent>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 3,
+          }}
+        >
+          <Avatar
+            src={user.avatar_url}
+            alt={user.login}
+            sx={{
+              width: 120,
+              height: 120,
+            }}
+          />
 
-      <h2>{user.name || "No Name"}</h2>
+          <Box>
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+            >
+              {user.name || "No Name"}
+            </Typography>
 
-      <p className="username">@{user.login}</p>
+            <Typography
+              color="text.secondary"
+              sx={{ mt: 0.5 }}
+            >
+              @{user.login}
+            </Typography>
 
-      <p className="bio">
-        {user.bio || "This user has no bio."}
-      </p>
+            <Typography
+              sx={{ mt: 2 }}
+            >
+              {user.bio || "This user has no bio."}
+            </Typography>
 
-      <p>📍 {user.location || "Unknown location"}</p>
+            <Typography
+              color="text.secondary"
+              sx={{ mt: 1 }}
+            >
+              📍 {user.location || "Unknown location"}
+            </Typography>
+          </Box>
+        </Box>
 
-      <div className="stats">
-        <div>
-          <h3>{user.public_repos}</h3>
-          <span>Repositories</span>
-        </div>
+        <Divider sx={{ my: 3 }} />
 
-        <div>
-          <h3>{user.followers}</h3>
-          <span>Followers</span>
-        </div>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            textAlign: "center",
+          }}
+        >
+          <Box>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+            >
+              {user.public_repos}
+            </Typography>
 
-        <div>
-          <h3>{user.following}</h3>
-          <span>Following</span>
-        </div>
-      </div>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+            >
+              Repositories
+            </Typography>
+          </Box>
 
-      <a
-        href={user.html_url}
-        target="_blank"
-        rel="noreferrer"
-      >
-        View GitHub Profile
-      </a>
-    </div>
+          <Box>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+            >
+              {user.followers}
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="text.secondary"
+            >
+              Followers
+            </Typography>
+          </Box>
+
+          <Box>
+            <Typography
+              variant="h6"
+              fontWeight="bold"
+            >
+              {user.following}
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="text.secondary"
+            >
+              Following
+            </Typography>
+          </Box>
+        </Box>
+
+        <Button
+          fullWidth
+          variant="contained"
+          href={user.html_url}
+          target="_blank"
+          rel="noreferrer"
+          sx={{ mt: 3 }}
+        >
+          View GitHub Profile
+        </Button>
+      </CardContent>
+    </Card>
   );
 }
 
