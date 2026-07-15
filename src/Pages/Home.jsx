@@ -25,14 +25,11 @@ function Home() {
   } = useGithub(username);
 
   useEffect(() => {
-    if (error?.response?.status === 404) {
-      toast.error("UserName not found!");
-    }
+    if (!error) return;
 
-    if (
-      error &&
-      error.response?.status == 404
-    ) {
+    if (error.response?.status === 404) {
+      toast.error("Username not found!");
+    } else {
       toast.error("Something went wrong!");
     }
   }, [error]);
@@ -42,6 +39,7 @@ function Home() {
       <Typography
         variant="h3"
         align="center"
+        fontWeight="bold"
         gutterBottom
       >
         GitHub Profile Finder
@@ -54,9 +52,13 @@ function Home() {
 
       {isLoading && <Loading />}
 
-      {user && <UserCard user={user} />}
+      {user && (
+        <UserCard user={user} />
+      )}
 
-      {user && <RepoList repos={repos} />}
+      {user && (
+        <RepoList repos={repos} />
+      )}
     </Container>
   );
 }

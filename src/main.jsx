@@ -1,7 +1,8 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   QueryClient,
   QueryClientProvider,
@@ -30,9 +31,9 @@ const theme = createTheme({
 });
 
 createRoot(document.getElementById("root")).render(
-  <ThemeProvider theme={theme}>
-    <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider theme={theme}>
       <App />
-    </QueryClientProvider>
-  </ThemeProvider>
+    </ThemeProvider>
+  </QueryClientProvider>
 );

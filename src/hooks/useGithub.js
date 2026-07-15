@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+
 import Githubapi from "../api/Githubapi.js";
+
 function useGithub(username) {
   const userQuery = useQuery({
     queryKey: ["user", username],
@@ -26,11 +28,13 @@ function useGithub(username) {
       return response.data;
     },
 
-    enabled: !!username,
+    // فقط وقتی user پیدا شد، repos رو بگیر
+    enabled: !!username && !!userQuery.data,
   });
 
   return {
     user: userQuery.data,
+
     repos: reposQuery.data || [],
 
     isLoading:
