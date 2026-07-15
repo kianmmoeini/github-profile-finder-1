@@ -1,0 +1,11 @@
+{
+  "contacts": [
+    {
+      "name": "kian",
+      "email": "kian123@gmail.com",
+      "message": "salam\n",
+      "id": "F-PUpMh7aZU"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
