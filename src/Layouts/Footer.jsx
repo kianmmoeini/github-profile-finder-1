@@ -98,7 +98,7 @@ function Footer() {
 
               <Typography
                 component={Link}
-                to="/contact"
+                to="/post"
                 sx={{
                   color: "#9ca3af",
                   textDecoration: "none",
@@ -107,7 +107,7 @@ function Footer() {
                   },
                 }}
               >
-                Contact
+                Post
               </Typography>
             </Stack>
           </Box>
