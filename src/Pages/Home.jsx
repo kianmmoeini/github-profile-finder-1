@@ -30,17 +30,22 @@ function Home() {
     if (error.response?.status === 404) {
       toast.error("Username not found!");
     } else {
-      toast.error("Something went wrong!");
+      toast.error(error.message);
     }
   }, [error]);
 
   return (
-    <Container sx={{ mt: 5 }}>
+    <Container
+      maxWidth="md"
+      sx={{
+        mt: 5,
+      }}
+    >
       <Typography
         variant="h3"
-        align="center"
         fontWeight="bold"
-        gutterBottom
+        textAlign="center"
+        mb={4}
       >
         GitHub Profile Finder
       </Typography>
@@ -52,13 +57,9 @@ function Home() {
 
       {isLoading && <Loading />}
 
-      {user && (
-        <UserCard user={user} />
-      )}
+      {user && <UserCard user={user} />}
 
-      {user && (
-        <RepoList repos={repos} />
-      )}
+      {user && <RepoList repos={repos} />}
     </Container>
   );
 }
