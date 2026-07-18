@@ -1,54 +1,85 @@
-# Github-Profile-Finder
- A modern React application that allows users to search for GitHub profiles and view repositories using the GitHub API. Built with React, Material UI,.
 # GitHub Profile Finder
 
-GitHub Profile Finder is a React-based web application that allows users to search for any GitHub account and instantly view public profile information along with the user's public repositories using the GitHub REST API.
+A modern React application for searching GitHub users, viewing profile information, and exploring public repositories.
 
-This project was developed to practice modern React concepts, including component-based architecture, state management with React Hooks, asynchronous data fetching, conditional rendering, and API integration.
+This project was built to practice modern React development concepts such as API requests, React Query, Axios, React Router, MUI, React Hook Form, and data management.
 
-## Features
+---
 
-* Search GitHub users by username
-* Display user profile information
-* Display public repositories
-* Loading and error handling
-* Responsive user interface
-* Clean and reusable component structure
+## 🚀 Features
 
-## Technologies Used
+- 🔍 Search GitHub users by username
+- 👤 Display GitHub user profile information
+- 📦 View public repositories
+- 🔗 Visit GitHub profiles and repositories
+- ⚛️ React Query for API request management
+- 🌐 Axios for API requests
+- 🧭 React Router for page navigation
+- 🎨 Material UI for a modern user interface
+- 📝 Contact form with React Hook Form
+- 💾 Store contact form data locally using JSON Server
+- 🔔 Toastify notifications for success and error messages
+- ⏳ Loading state management
+- ❌ Error handling for invalid usernames and API errors
+- 📱 Clean and responsive layout
 
-* React
-* Vite
-* JavaScript (ES6+)
-* GitHub REST API
-* CSS
-* Material UI (MUI)
+---
 
-## Material UI Integration
+## 🛠️ Technologies
 
-Material UI was integrated in a modular way by creating reusable UI components instead of placing all MUI code directly inside the main application. Components such as loading indicators and other interface elements were imported where needed, keeping the project organized, maintainable, and scalable.
+### Frontend
 
-## Project Structure
+- React
+- JavaScript
+- Vite
+- Material UI (MUI)
 
-The application follows a component-based architecture where each UI element is separated into its own reusable component. This approach improves code readability, simplifies maintenance, and makes future feature development easier.
+### Data & API
 
-## Learning Objectives
+- Axios
+- React Query
+- GitHub REST API
+- JSON Server
 
-This project was created to strengthen practical React skills, including:
+### Forms & Notifications
 
-* Building reusable React components
-* Working with APIs using Fetch
-* Managing application state with Hooks
-* Conditional rendering
-* Organizing React projects
-* Integrating third-party UI libraries
-* Using Git and GitHub for version control
+- React Hook Form
+- React Toastify
 
-## Future Improvements
+### Routing
 
-* Repository search and filtering
-* Dark mode
-* Pagination for repositories
-* Repository statistics
-* Better animations and transitions
-* Deployment with Vercel
+- React Router DOM
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+│
+├── api/
+│   ├── Githubapi.js
+│   └── contactApi.js
+│
+├── components/
+│   ├── Header.jsx
+│   ├── Footer.jsx
+│   ├── SearchBar.jsx
+│   ├── UserCard.jsx
+│   ├── RepoList.jsx
+│   └── Loading.jsx
+│
+├── hooks/
+│   └── useGithub.js
+│
+├── Layouts/
+│   └── MainLayouts.jsx
+│
+├── Pages/
+│   ├── Home.jsx
+│   ├── Contact.jsx
+│   └── reactquery-post.jsx
+│
+├── App.jsx
+├── main.jsx
+└── index.css
