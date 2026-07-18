@@ -83,3 +83,10 @@ src/
 ├── App.jsx
 ├── main.jsx
 └── index.css
+| Command           | Description                       |
+| ----------------- | --------------------------------- |
+| `npm install`     | Install project dependencies      |
+| `npm run dev`     | Start the Vite development server |
+| `npm run server`  | Start the JSON Server             |
+| `npm run build`   | Build the project for production  |
+| `npm run preview` | Preview the production build      |
