@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Database
+db.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -19,6 +22,7 @@ dist-ssr
 .DS_Store
 *.suo
 *.ntvs*
+*.njsproj
 *.njsproj
 *.sln
 *.sw?
