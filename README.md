@@ -83,8 +83,8 @@ src/
 ├── App.jsx
 ├── main.jsx
 └── index.css
-
- Install Packages
+```
+### Install Packages
 
 First, install all required packages:
 
@@ -114,14 +114,14 @@ http://localhost:3000
 
 ⚠️ The React application and JSON Server must be running in separate terminals.
 
-🧪 Available Scripts
+### 🧪 Available Scripts
 Command	Description
 npm install	Install project dependencies
 npm run dev	Start the Vite development server
 npm run server	Start the JSON Server
 npm run build	Build the project for production
 npm run preview	Preview the production build
-🎯 Project Goals
+### 🎯 Project Goals
 
 This project was created to practice and improve skills in:
 
@@ -135,19 +135,16 @@ React Hook Form
 Form handling
 Error handling
 Git and GitHub workflow
-📊 Future Improvements
+### 📊 Future Improvements
 
 Planned improvements include:
-
-📈 Data analysis of contact form submissions
 📊 Contact data dashboard
-📉 Data visualization and charts
 🔐 User authentication
 🌍 Deployment with a real backend
 🗄️ Migration from JSON Server to a real database
 🧪 Unit testing
 👨‍💻 Author
 
-Created by Kian Moeini
+# Created by Kian Moeini
 
-⭐ If you like this project, feel free to star the repository!
+## ⭐ If you like this project, feel free to star the repository!
