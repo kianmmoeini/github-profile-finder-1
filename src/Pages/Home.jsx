@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 import SearchBar from "../components/SearchBar.jsx";
 import UserCard from "../components/UserCard.jsx";
-import Repolist from "../components/RepoList.jsx";
+import RepoList from "../components/RepoList.jsx";
 import Loading from "../components/Loading.jsx";
 
 import useGithub from "../hooks/useGithub.js";
@@ -30,7 +30,9 @@ function Home() {
     if (error.response?.status === 404) {
       toast.error("Username not found!");
     } else {
-      toast.error(error.message);
+      toast.error(
+        error.message || "Something went wrong!"
+      );
     }
   }, [error]);
 
@@ -39,6 +41,7 @@ function Home() {
       maxWidth="md"
       sx={{
         mt: 5,
+        mb: 5,
       }}
     >
       <Typography
