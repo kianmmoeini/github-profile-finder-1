@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 
-import Header from "../layouts/Header.jsx";
-import Footer from "../Layouts/Footer.jsx";
+import Header from "./Header";
+import Footer from "./Footer";
 function MainLayout({ children }) {
   return (
     <Box
