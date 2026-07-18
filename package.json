@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "server": "json-server --watch db.json --port 3000"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -24,7 +23,8 @@
     "react-hook-form": "^7.81.0",
     "react-router-dom": "^7.18.1",
     "react-toastify": "^11.1.0",
-    "styled-components": "^6.4.3"
+    "styled-components": "^6.4.3",
+    "vercel": "^56.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

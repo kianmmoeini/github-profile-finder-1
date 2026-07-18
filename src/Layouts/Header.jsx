@@ -7,19 +7,36 @@ import {
 } from "@mui/material";
 
 import { Link } from "react-router-dom";
-// making the header component
+
 function Header() {
   return (
-    <AppBar position="static">
-      <Toolbar>
+    <AppBar
+      position="static"
+      elevation={0}
+    >
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          px: {
+            xs: 2,
+            md: 8,
+          },
+        }}
+      >
         <Typography
           variant="h6"
-          sx={{ flexGrow: 1 }}
+          fontWeight="bold"
         >
-          GitHub Profile Finder
+          GitHub Finder
         </Typography>
 
-        <Box>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 1,
+          }}
+        >
           <Button
             color="inherit"
             component={Link}
@@ -31,17 +48,17 @@ function Header() {
           <Button
             color="inherit"
             component={Link}
-            to="/about"
+            to="/profile"
           >
-            React Query Post
+            Profile
           </Button>
 
           <Button
             color="inherit"
             component={Link}
-            to="/contact"
+            to="/post"
           >
-            Contact
+            Post
           </Button>
         </Box>
       </Toolbar>

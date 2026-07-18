@@ -4,13 +4,11 @@ import {
   Route,
 } from "react-router-dom";
 
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 import MainLayout from "./Layouts/MainLayouts.jsx";
+
 import Home from "./Pages/Home.jsx";
-import About from "./Pages/reactquery-post.jsx";
-import Contact from "./Pages/Contact.jsx";
+import Profile from "./Pages/Profile.jsx";
+import ReactQueryPost from "./Pages/reactquery-post.jsx";
 
 function App() {
   return (
@@ -23,21 +21,15 @@ function App() {
           />
 
           <Route
-            path="/about"
-            element={<About />}
+            path="/profile"
+            element={<Profile />}
           />
 
           <Route
-            path="/contact"
-            element={<Contact />}
+            path="/post"
+            element={<ReactQueryPost />}
           />
         </Routes>
-
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          theme="light"
-        />
       </MainLayout>
     </BrowserRouter>
   );
