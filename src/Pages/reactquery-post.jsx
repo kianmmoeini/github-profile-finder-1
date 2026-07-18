@@ -10,7 +10,7 @@ import {
 
 import { useMutation } from "@tanstack/react-query";
 
-import { createPost } from "../api/jsonPlaceholderApi.js";
+import { createPost } from "../api/JsonPlaceHolderApi";
 
 function ReactQueryPost() {
   const {
