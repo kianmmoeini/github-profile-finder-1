@@ -1,17 +1,29 @@
-import Footer from "./Footer";
-import Header from "./Header";
-// making layout component to wrap the header and footer around the main content 
+import { Box } from "@mui/material";
+
+import Header from "../layouts/Header.jsx";
+import Footer from "../Layouts/Footer.jsx";
 function MainLayout({ children }) {
   return (
-    <div className="main-layout">
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Header />
 
-      <main className="main-content">
+      <Box
+        component="main"
+        sx={{
+          flex: 1,
+        }}
+      >
         {children}
-      </main>
+      </Box>
 
       <Footer />
-    </div>
+    </Box>
   );
 }
 
