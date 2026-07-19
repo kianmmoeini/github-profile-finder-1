@@ -62,17 +62,18 @@ src/
 │   └── contactApi.js
 │
 ├── components/
-│   ├── Header.jsx
-│   ├── Footer.jsx
 │   ├── SearchBar.jsx
 │   ├── UserCard.jsx
 │   ├── RepoList.jsx
 │   └── Loading.jsx
+│   └──Loader.jsx
 │
 ├── hooks/
 │   └── useGithub.js
 │
 ├── Layouts/
+│   ├── Header.jsx
+│   ├── Footer.jsx
 │   └── MainLayouts.jsx
 │
 ├── Pages/
