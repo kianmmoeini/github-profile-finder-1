@@ -10,10 +10,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <AppBar
-      position="static"
-      elevation={0}
-    >
+    <AppBar position="static">
       <Toolbar
         sx={{
           display: "flex",
@@ -24,10 +21,7 @@ function Header() {
           },
         }}
       >
-        <Typography
-          variant="h6"
-          fontWeight="bold"
-        >
+        <Typography variant="h6">
           GitHub Finder
         </Typography>
 

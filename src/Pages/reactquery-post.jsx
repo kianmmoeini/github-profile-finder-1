@@ -5,12 +5,11 @@ import {
   Button,
   TextField,
   Typography,
+  Container,
   Alert,
 } from "@mui/material";
 
-import { useMutation } from "@tanstack/react-query";
-
-import { createPost } from "../api/JsonPlaceHolderApi";
+import usePost from "../hooks/usePost.js";
 
 function ReactQueryPost() {
   const {
@@ -19,115 +18,109 @@ function ReactQueryPost() {
     reset,
   } = useForm();
 
-  const createPostMutation = useMutation({
-    mutationFn: createPost,
+  const {
+    createPost,
+    isLoading,
+    isSuccess,
+    error,
+    data,
+  } = usePost();
 
-    onSuccess: () => {
-      reset();
-    },
-  });
+  const onSubmit = (formData) => {
+    createPost({
+      title: formData.title,
+      body: formData.body,
+      userId: 1,
+    });
 
-  const onSubmit = (data) => {
-    createPostMutation.mutate(data);
+    reset();
   };
 
   return (
-    <Box
-      sx={{
-        maxWidth: 600,
-        mx: "auto",
-        mt: 6,
-        p: 3,
-      }}
-    >
-      <Typography
-        variant="h4"
-        fontWeight="bold"
-        mb={3}
-      >
-        Send a Post
-      </Typography>
-
+    <Container maxWidth="sm">
       <Box
-        component="form"
-        onSubmit={handleSubmit(onSubmit)}
+        sx={{
+          mt: 6,
+          p: 4,
+          borderRadius: 3,
+          boxShadow: 3,
+          backgroundColor: "white",
+        }}
       >
-        <TextField
-          fullWidth
-          label="Title"
-          {...register("title", {
-            required: true,
-          })}
-          sx={{ mb: 2 }}
-        />
-
-        <TextField
-          fullWidth
-          multiline
-          rows={5}
-          label="Message"
-          {...register("body", {
-            required: true,
-          })}
-          sx={{ mb: 2 }}
-        />
-
-        <Button
-          type="submit"
-          variant="contained"
-          disabled={createPostMutation.isPending}
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={3}
+          textAlign="center"
         >
-          {createPostMutation.isPending
-            ? "Sending..."
-            : "Send Post"}
-        </Button>
-      </Box>
+          Create Post
+        </Typography>
 
-      {createPostMutation.isSuccess && (
-        <Alert
-          severity="success"
-          sx={{ mt: 3 }}
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
         >
-          Post sent successfully!
-        </Alert>
-      )}
+          <TextField
+            fullWidth
+            label="Title"
+            {...register("title", {
+              required: true,
+            })}
+            sx={{ mb: 3 }}
+          />
 
-      {createPostMutation.isError && (
-        <Alert
-          severity="error"
-          sx={{ mt: 3 }}
-        >
-          {createPostMutation.error.message}
-        </Alert>
-      )}
+          <TextField
+            fullWidth
+            multiline
+            rows={5}
+            label="Message"
+            {...register("body", {
+              required: true,
+            })}
+            sx={{ mb: 3 }}
+          />
 
-      {createPostMutation.isSuccess && (
-        <Box sx={{ mt: 3 }}>
-          <Typography
-            variant="h6"
-            fontWeight="bold"
+          <Button
+            fullWidth
+            type="submit"
+            variant="contained"
+            disabled={isLoading}
           >
-            JSONPlaceholder Response
-          </Typography>
-
-          <Typography>
-            Title: {createPostMutation.data.title}
-          </Typography>
-
-          <Typography>
-            Message: {createPostMutation.data.body}
-          </Typography>
-
-          <Typography>
-            Post ID: {createPostMutation.data.id}
-          </Typography>
-
-          <Typography>
-            User ID: {createPostMutation.data.userId}
-          </Typography>
+            {isLoading
+              ? "Sending..."
+              : "Send Post"}
+          </Button>
         </Box>
-      )}
-    </Box>
+
+        {isSuccess && (
+          <Alert
+            severity="success"
+            sx={{ mt: 3 }}
+          >
+            Post sent successfully!
+          </Alert>
+        )}
+
+        {error && (
+          <Alert
+            severity="error"
+            sx={{ mt: 3 }}
+          >
+            {error.message}
+          </Alert>
+        )}
+
+        {data && (
+          <Typography
+            mt={2}
+            variant="body2"
+            color="text.secondary"
+          >
+            Post ID: {data.id}
+          </Typography>
+        )}
+      </Box>
+    </Container>
   );
 }
 

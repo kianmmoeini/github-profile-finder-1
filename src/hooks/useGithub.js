@@ -1,36 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-
-import Githubapi from "../api/Githubapi.js";
+import {
+  useGithubUserQuery,
+  useGithubReposQuery,
+} from "../Queries/githubQueries";
 
 function useGithub(username) {
-  const userQuery = useQuery({
-    queryKey: ["user", username],
+  const userQuery = useGithubUserQuery(username);
 
-    queryFn: async () => {
-      const response = await Githubapi.get(
-        `/users/${username}`
-      );
-
-      return response.data;
-    },
-
-    enabled: !!username,
-  });
-
-  const reposQuery = useQuery({
-    queryKey: ["repos", username],
-
-    queryFn: async () => {
-      const response = await Githubapi.get(
-        `/users/${username}/repos`
-      );
-
-      return response.data;
-    },
-
-    // فقط وقتی user پیدا شد، repos رو بگیر
-    enabled: !!username && !!userQuery.data,
-  });
+  const reposQuery = useGithubReposQuery(username);
 
   return {
     user: userQuery.data,
@@ -38,10 +14,12 @@ function useGithub(username) {
     repos: reposQuery.data || [],
 
     isLoading:
-      userQuery.isLoading || reposQuery.isLoading,
+      userQuery.isLoading ||
+      reposQuery.isLoading,
 
     error:
-      userQuery.error || reposQuery.error,
+      userQuery.error ||
+      reposQuery.error,
   };
 }
 

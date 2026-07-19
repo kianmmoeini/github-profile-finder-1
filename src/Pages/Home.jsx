@@ -48,7 +48,7 @@ function Home() {
         variant="h3"
         fontWeight="bold"
         textAlign="center"
-        mb={4}
+        mb={2}
       >
         GitHub Profile Finder
       </Typography>
