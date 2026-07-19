@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 import SearchBar from "../components/SearchBar.jsx";
 import UserCard from "../components/UserCard.jsx";
-import RepoList from "../components/RepoList.jsx";
+import RepoList from "../components/Repolist.jsx";
 import Loading from "../components/Loading.jsx";
 
 import useGithub from "../hooks/useGithub.js";
