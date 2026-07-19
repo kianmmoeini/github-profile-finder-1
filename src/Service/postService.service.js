@@ -1,5 +1,4 @@
-import Jsonplaceholderapi from "../api/Jsonplaceholderapi.js";
-
+import jsonPlaceholderApi from "../api/JsonPlaceHolderApi";
 export const createPost = async (postData) => {
   const response = await Jsonplaceholderapi.post(
     "/posts",
