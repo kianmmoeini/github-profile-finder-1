@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 
 import Header from "./Header";
 import Footer from "./Footer";
+
 function MainLayout({ children }) {
   return (
     <Box

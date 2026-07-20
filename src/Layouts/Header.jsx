@@ -10,7 +10,10 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      elevation={0}
+    >
       <Toolbar
         sx={{
           display: "flex",
@@ -21,8 +24,17 @@ function Header() {
           },
         }}
       >
-        <Typography variant="h6">
-          GitHub Finder
+        <Typography
+          variant="h6"
+          component={Link}
+          to="/"
+          sx={{
+            color: "inherit",
+            textDecoration: "none",
+            fontWeight: 700,
+          }}
+        >
+          KIAN
         </Typography>
 
         <Box
@@ -44,15 +56,23 @@ function Header() {
             component={Link}
             to="/profile"
           >
-            Profile
+            About
           </Button>
 
           <Button
             color="inherit"
             component={Link}
-            to="/post"
+            to="/projects"
           >
-            Post
+            Projects
+          </Button>
+
+          <Button
+            color="inherit"
+            component={Link}
+            to="/contact"
+          >
+            Contact
           </Button>
         </Box>
       </Toolbar>

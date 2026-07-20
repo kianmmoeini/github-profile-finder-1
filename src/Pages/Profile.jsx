@@ -1,142 +1,134 @@
 import {
   Box,
-  Container,
-  Typography,
-  Button,
   Chip,
+  Container,
+  Divider,
   Stack,
-  Paper,
-  Avatar,
+  Typography,
 } from "@mui/material";
-
-import { Link } from "react-router-dom";
-
-import profileImage from "../assets/profile.jpg";
 
 function Profile() {
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <Box
         sx={{
-          minHeight: "70vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          py: 6,
+          mt: 6,
+          mb: 8,
         }}
       >
-        <Paper
-          elevation={4}
+        <Typography
+          variant="overline"
+          color="secondary"
+          fontWeight="bold"
+        >
+          About Me
+        </Typography>
+
+        <Typography
+          variant="h2"
+          fontWeight="bold"
+          mt={1}
+          mb={3}
           sx={{
-            width: "100%",
-            p: {
-              xs: 3,
-              md: 6,
+            fontSize: {
+              xs: "2.5rem",
+              md: "4rem",
             },
-            borderRadius: 4,
-            textAlign: "center",
           }}
         >
-          <Avatar
-            src={profileImage}
-            alt="Kian Moeini"
-            sx={{
-              width: 150,
-              height: 150,
-              mx: "auto",
-              mb: 3,
-            }}n
-          />
+          A little about me.
+        </Typography>
+        <Typography
+          variant="h4"    
+          mt={1}
+          mb={3}
+        >
+          Frontend Developer & AI / Data Enthusiast
+        </Typography>
 
+        <Box
+          sx={{
+            maxWidth: 800,
+          }}
+        >
           <Typography
-            variant="h3"
-            fontWeight="bold"
-            gutterBottom
-          >
-            Kian Moeini
-          </Typography>
-
-          <Typography
-            variant="h6"
-            color="primary"
-            mb={3}
-          >
-            Frontend Developer
-          </Typography>
-
-          <Typography
-            variant="body1"
             color="text.secondary"
-            lineHeight={1.8}
-            mb={4}
-          >
-            I'm a frontend developer passionate about building
-            modern and user-friendly web applications. I enjoy
-            working with React, JavaScript, and modern frontend
-            technologies.
-          </Typography>
-
-          <Typography
-            variant="h5"
-            fontWeight="bold"
+            lineHeight={2}
             mb={2}
           >
-            My Skills
+            I'm Kian Moeini, a developer with a strong interest in frontend development, artificial intelligence and data.
+
+            I work with React to build modern and user-friendly web applications. Alongside frontend development, I have experience working with data science and data analysis projects, and I have explored machine learning, AI algorithms and the theory behind artificial intelligence.
+
+            I also work with Python and Flask, and I have experience designing a model with Lua. I enjoy learning new technologies and turning ideas into practical projects.
           </Typography>
 
-          {/* Skills */}
-          <Stack
-            direction="row"
-            spacing={1}
-            justifyContent="center"
-            alignItems="center"
-            flexWrap="wrap"
-            useFlexGap
-            sx={{
-              mb: 4,
-              width: "100%",
-            }}
+          <Typography
+            color="text.secondary"
+            lineHeight={2}
           >
-            <Chip label="React" color="primary" />
-            <Chip label="JavaScript" color="primary" />
-            <Chip label="MUI" color="primary" />
-            <Chip label="React Query" color="primary" />
-            <Chip label="Axios" color="primary" />
-            <Chip label="Git" color="primary" />
-            <Chip label="GitHub" color="primary" />
-          </Stack>
+            I enjoy learning new technologies and
+            improving my skills by building real-world
+            projects. My main focus is creating clean,
+            functional and user-friendly interfaces.
+          </Typography>
+        </Box>
 
-          {/* Buttons */}
-          <Stack
-            direction={{
-              xs: "column",
-              sm: "row",
-            }}
-            spacing={2}
-            justifyContent="center"
-            alignItems="center"
-            sx={{
-              width: "100%",
-            }}
-          >
-            <Button
-              variant="contained"
-              component={Link}
-              to="/"
-            >
-              View Project
-            </Button>
+        <Divider sx={{ my: 6 }} />
 
-            <Button
-              variant="outlined"
-              href="https://github.com/kianmmoeini"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </Button>
-          </Stack>
-        </Paper>
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={3}
+        >
+          My Skills
+        </Typography>
+
+        <Stack
+          direction="row"
+          spacing={1}
+          useFlexGap
+          flexWrap="wrap"
+        >
+          <Chip label="React" />
+          <Chip label="JavaScript" />
+          <Chip label="HTML" />
+          <Chip label="CSS" />
+          <Chip label="Material UI" />
+          <Chip label="Axios" />
+          <Chip label="React Query" />
+          <Chip label="React Router" />
+          <Chip label="Git" />
+          <Chip label="GitHub" />
+          <Chip label="Python" />
+          <Chip label="Data science" />
+          <Chip label="Data analysis" />
+          <Chip label="Al algoritm" />
+          <Chip label="AI theory" />
+          <Chip label="Lua" />
+          <Chip label="Flast framework" />
+        </Stack>
+
+        <Divider sx={{ my: 6 }} />
+
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          mb={3}
+        >
+          What I Do
+        </Typography>
+
+        <Typography
+          color="text.secondary"
+          lineHeight={2}
+          maxWidth={800}
+        >
+          I build frontend applications with React,
+          work with APIs, manage server state using
+          React Query, and create responsive interfaces
+          with Material UI.
+        </Typography>
       </Box>
     </Container>
   );

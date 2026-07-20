@@ -8,7 +8,8 @@ import MainLayout from "./Layouts/MainLayouts.jsx";
 
 import Home from "./Pages/Home.jsx";
 import Profile from "./Pages/Profile.jsx";
-import ReactQueryPost from "./Pages/reactquery-post.jsx";
+import Projects from "./Pages/Projects.jsx";
+import Contact from "./components/Contact/Contact.jsx";
 
 function App() {
   return (
@@ -26,8 +27,13 @@ function App() {
           />
 
           <Route
-            path="/post"
-            element={<ReactQueryPost />}
+            path="/projects"
+            element={<Projects />}
+          />
+
+          <Route
+            path="/contact"
+            element={<Contact />}
           />
         </Routes>
       </MainLayout>
