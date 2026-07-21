@@ -43,7 +43,7 @@ ${data.message}`
         sx={{
           minHeight: "75vh",
           py: {
-            xs: 6,
+            xs: 5,
             md: 10,
           },
         }}
@@ -51,7 +51,7 @@ ${data.message}`
         <Box
           sx={{
             maxWidth: 650,
-            mb: 6,
+            mb: { xs: 4, md: 6 },
           }}
         >
           <Typography
@@ -68,7 +68,8 @@ ${data.message}`
             sx={{
               mt: 1,
               fontSize: {
-                xs: "3rem",
+                xs: "2.25rem",
+                sm: "3.25rem",
                 md: "5rem",
               },
               fontWeight: 700,
@@ -79,8 +80,8 @@ ${data.message}`
 
           <Typography
             color="text.secondary"
-            lineHeight={1.8}
             mt={2}
+            sx={{ lineHeight: { xs: 1.6, md: 1.8 } }}
           >
             Have a project in mind or want to talk? Feel free to
             send me a message.
@@ -91,7 +92,7 @@ ${data.message}`
           elevation={0}
           sx={{
             p: {
-              xs: 3,
+              xs: 2.5,
               sm: 5,
             },
             borderRadius: 3,
@@ -147,7 +148,8 @@ ${data.message}`
                 variant="contained"
                 size="large"
                 sx={{
-                  alignSelf: "flex-start",
+                  alignSelf: { xs: "stretch", sm: "flex-start" },
+                  width: { xs: "100%", sm: "auto" },
                   px: 4,
                   py: 1.3,
                   borderRadius: 2,
