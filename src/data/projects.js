@@ -7,7 +7,7 @@ const projects = [
     image: "/github-project-1.png",
     technologies: ["React", "React Query", "Axios", "MUI"],
     github: "https://github.com/kianmmoeini/github-profile-finder-1",
-    demo: "https://github-profile-finder-peach-mu.vercel.app/",
+    demo: "https://github-profile-finder-project-lemon.vercel.app/",
   },
 
   {
@@ -18,7 +18,7 @@ const projects = [
     image: "/github-project.png",
     technologies: ["React", "JavaScript"],
     github: "https://github.com/kianmmoeini",
-    demo: "https://github-profile-finder-3qkqesn3q-kianmmoeinis-projects.vercel.app/",
+    demo: "https://github-profile-finder-project-lemon.vercel.app/",
   },
 ];
 
