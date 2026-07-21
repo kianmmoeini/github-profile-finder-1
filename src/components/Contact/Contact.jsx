@@ -32,7 +32,7 @@ Message:
 ${data.message}`
     );
 
-    window.location.href = `mailto:YOUR_EMAIL@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:kianmoeini658@gmail.com?subject=${subject}&body=${body}`;
 
     reset();
   };
