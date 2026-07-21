@@ -1,3 +1,5 @@
+import { useState } from "react";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -6,9 +8,13 @@ import {
   Stack,
   TextField,
   Typography,
+  Alert,
 } from "@mui/material";
 
 import { useForm } from "react-hook-form";
+
+
+const WEB3FORMS_ACCESS_KEY = "0e68204c-03e5-48df-bdf3-3feebe74090d";
 
 function Contact() {
   const {
@@ -18,23 +24,29 @@ function Contact() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const subject = encodeURIComponent(
-      `Portfolio Contact - ${data.name}`
-    );
+  const [status, setStatus] = useState(null); // "success" | "error" | null
+  const [loading, setLoading] = useState(false);
 
-    const body = encodeURIComponent(
-      `Name: ${data.name}
+  const onSubmit = async (data) => {
+    setLoading(true);
+    setStatus(null);
 
-Email: ${data.email}
+    try {
+      await axios.post("https://api.web3forms.com/submit", {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `Portfolio Contact - ${data.name}`,
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      });
 
-Message:
-${data.message}`
-    );
-
-    window.location.href = `mailto:kianmoeini658@gmail.com?subject=${subject}&body=${body}`;
-
-    reset();
+      setStatus("success");
+      reset();
+    } catch (error) {
+      setStatus("error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -105,6 +117,18 @@ ${data.message}`
             onSubmit={handleSubmit(onSubmit)}
           >
             <Stack spacing={3}>
+              {status === "success" && (
+                <Alert severity="success">
+                  Your message was sent successfully. I'll get back to you soon!
+                </Alert>
+              )}
+
+              {status === "error" && (
+                <Alert severity="error">
+                  Something went wrong. Please try again or email me directly.
+                </Alert>
+              )}
+
               <TextField
                 label="Name"
                 fullWidth
@@ -147,6 +171,7 @@ ${data.message}`
                 type="submit"
                 variant="contained"
                 size="large"
+                disabled={loading}
                 sx={{
                   alignSelf: { xs: "stretch", sm: "flex-start" },
                   width: { xs: "100%", sm: "auto" },
@@ -155,7 +180,7 @@ ${data.message}`
                   borderRadius: 2,
                 }}
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </Button>
             </Stack>
           </Box>
